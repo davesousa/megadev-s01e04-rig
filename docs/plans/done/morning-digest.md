@@ -1,8 +1,9 @@
 ---
 plan: morning-digest
-status: ready
+status: done
 owner: rook
 opened: 2026-10-29
+closed: 2026-10-30
 ---
 
 # Morning digest
@@ -77,3 +78,16 @@ page again with `LANE_MARKER` unset (the banner reads "no marker set") and uploa
 link. Move this plan to `docs/plans/done/` with its issue list.
 
 Done when: the preview link no longer shows the lane marker.
+
+## Issues
+
+| # | Plan section | Issue | Blocked by |
+|---|--------------|-------|------------|
+| 1 | § 1 · Run log reader | [Shared digest contract](https://github.com/davesousa/megadev-s01e04-rig/issues/1) | — |
+| 2 | § 1 · Run log reader | [Run log reader and tests](https://github.com/davesousa/megadev-s01e04-rig/issues/2) | #1 |
+| 3 | § 2a · Page | [Human digest page](https://github.com/davesousa/megadev-s01e04-rig/issues/3) | #1, #2 |
+| 4 | § 2b · JSON | [Agent JSON route](https://github.com/davesousa/megadev-s01e04-rig/issues/4) | #1, #2, #3 |
+| 5 | § 2c · Board link | [Status-board night links](https://github.com/davesousa/megadev-s01e04-rig/issues/5) | #1, #2, #3 |
+| 6 | § 2d · Route tests | [Route behavior tests](https://github.com/davesousa/megadev-s01e04-rig/issues/6) | #1, #2, #3, #4 |
+| 7 | § 3 · Preview for review | [Public preview and review request](https://github.com/davesousa/megadev-s01e04-rig/issues/7) | #2, #3, #4, #5, #6 |
+| 8 | § 4 · Clean up | [Remove marker and archive plan](https://github.com/davesousa/megadev-s01e04-rig/issues/8) | #7 |
