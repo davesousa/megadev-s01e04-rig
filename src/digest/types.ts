@@ -2,15 +2,16 @@ export type DigestStatus = 'ok' | 'retry' | 'fail';
 
 export type DigestRow = {
   job: string;
-  // Owner from the job's last valid event, including an explicit null.
+  // Owner from the job's last valid event in file order, including an explicit null.
   owner: string | null;
   // All valid events for this job; retries counts only status === 'retry'.
   runs: number;
   retries: number;
+  // Status from the job's last valid event in file order.
   lastStatus: DigestStatus;
-  // Error from the last event, or null when that event has no error.
+  // Latest error encountered in file order; recovery does not clear it. Null if none.
   lastError: string | null;
-  // Original at strings from the first/last events in file order; keep offsets.
+  // Chronological bounds as original at strings, keeping offsets; first seen wins ties.
   firstAt: string;
   lastAt: string;
 };
@@ -26,7 +27,7 @@ export type DigestNight = {
   counts: DigestCounts;
 };
 
-// Contract for the future readNight implementation (synchronous, like readStatus).
+// Synchronous, like readStatus. Unsafe/non-YYYY-MM-DD night input returns null.
 // Missing file: null. Empty file: a DigestNight with [], zero malformed lines and
 // zero counts. Other I/O errors propagate rather than masquerading as a missing night.
 export type ReadNight = (runsDir: string, night: string) => DigestNight | null;
