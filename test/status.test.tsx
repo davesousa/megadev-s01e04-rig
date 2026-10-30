@@ -1,7 +1,13 @@
-import { describe, expect, it } from 'vitest';
+import { afterEach, describe, expect, it } from 'vitest';
 import { createApp } from '../src/app.js';
 
 const config = { adapter: 'shim', installed: '2026-10-29T14:06:00+01:00', beatEverySeconds: 60, runsDir: 'runs' };
+const originalLaneMarker = process.env.LANE_MARKER;
+
+afterEach(() => {
+  if (originalLaneMarker === undefined) delete process.env.LANE_MARKER;
+  else process.env.LANE_MARKER = originalLaneMarker;
+});
 
 describe('status board', () => {
   it('shows the lane banner and linked nights with shared-reader event counts', async () => {
